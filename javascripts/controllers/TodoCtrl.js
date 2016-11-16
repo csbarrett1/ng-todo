@@ -6,14 +6,19 @@ app.controller("TodoCtrl", function($scope, ItemFactory){
   $scope.newTask = {};
   $scope.items = [];
 
-  ItemFactory.getItemList().then(function(fbItems){
-    $scope.items = fbItems;
-  })
+  let getItems = function(){
+    ItemFactory.getItemList().then(function(fbItems){
+      $scope.items = fbItems;
+    })  
+  }
+  
+  getItems();
 
   $scope.allItems = function(){
     console.log("you clicked all items");
     $scope.showListView = true;    
   }
+
   $scope.newItem=function(){
     console.log("you clicked new item");
     $scope.showListView = false;
@@ -21,10 +26,10 @@ app.controller("TodoCtrl", function($scope, ItemFactory){
 
 $scope.addNewItem = function(){
   $scope.newTask.isCompleted = false;
-  $scope.newTask.id = $scope.items.length;
-console.log("newTask in function", $scope.newTask);
-$scope.items.push($scope.newTask);
-$scope.newTask = {};
-$scope.showListView = true;
-}
+  ItemFactory.postNewItem($scope.newTask).then(function(itemId){
+    getItems();
+    $scope.newTask = {};
+    $scope.showListView = true;
+  })
+  }
 })
