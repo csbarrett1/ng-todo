@@ -22,5 +22,5 @@ app.config(function($routeProvider){
 			templateUrl: 'partials/item-new.html',
 			controller:'ItemEditCtrl'
 		})
-		.otherwise('/items/list')
-})
+		.otherwise('/items/list');
+});

@@ -15,9 +15,9 @@ app.factory("ItemFactory", function($q, $http, FIREBASE_CONFIG){
         })
         .error(function(errorResponse){
           reject(errorResponse);
-        })
-    })
-  }
+        });
+    });
+  };
 
   var postNewItem = function(newItem){
     return $q((resolve, reject) =>{
@@ -33,9 +33,9 @@ app.factory("ItemFactory", function($q, $http, FIREBASE_CONFIG){
         })
         .error(function(postError){
           reject(postError);
-        })
-    })
-  }
+        });
+    });
+  };
 
   var deleteItem = function(itemId){
     return $q((resolve, reject) => {
@@ -45,8 +45,8 @@ app.factory("ItemFactory", function($q, $http, FIREBASE_CONFIG){
       })
       .error(function(deleteError){
         reject(deleteError);
-      })
-    })
+      });
+    });
   };
 
   var getSingleItem = function(itemId){
@@ -57,8 +57,8 @@ app.factory("ItemFactory", function($q, $http, FIREBASE_CONFIG){
       })
       .error(function(getSingleError){
         reject(getSingleError);
-      })
-    })
+      });
+    });
   };
 
   var editItem = function(editItem){
@@ -75,13 +75,13 @@ app.factory("ItemFactory", function($q, $http, FIREBASE_CONFIG){
         })
         .error(function(editError){
           reject(editError);
-        })
-    })
-  }
+        });
+    });
+  };
 
 
 
 
 
-  return {getItemList:getItemList, postNewItem:postNewItem, deleteItem:deleteItem, getSingleItem:getSingleItem, editItem:editItem}
-})
+  return {getItemList:getItemList, postNewItem:postNewItem, deleteItem:deleteItem, getSingleItem:getSingleItem, editItem:editItem};
+});

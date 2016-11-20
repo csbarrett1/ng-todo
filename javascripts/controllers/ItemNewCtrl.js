@@ -8,6 +8,6 @@ app.controller("ItemNewCtrl", function($scope, $location, ItemFactory){
 	  ItemFactory.postNewItem($scope.newTask).then(function(itemId){
 	    $location.url("/items/list");
 	    $scope.newTask = {};
-	  })
-  	}
-})
+	  });
+  	};
+});
