@@ -79,9 +79,5 @@ app.factory("ItemFactory", function($q, $http, FIREBASE_CONFIG){
     });
   };
 
-
-
-
-
   return {getItemList:getItemList, postNewItem:postNewItem, deleteItem:deleteItem, getSingleItem:getSingleItem, editItem:editItem};
 });
